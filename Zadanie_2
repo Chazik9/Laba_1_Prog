@@ -1,0 +1,40 @@
+using System;
+
+namespace Laba_1
+{
+    internal class Zadanie_2
+    {
+        static void Main(string[] args)
+        {
+            double x, y;
+            bool IsNumber, IsOblast;
+            string temp;
+            IsNumber = false;
+            do
+            {
+                Console.WriteLine("Введите элемент x");
+                temp = Console.ReadLine();
+                IsNumber = double.TryParse(temp, out x);
+                if (!IsNumber) { Console.WriteLine("Введены некоректные данные"); }
+            } while (!IsNumber);    
+            do
+            {
+                Console.WriteLine("Введите элемент y");
+                temp = Console.ReadLine();
+                IsNumber = double.TryParse(temp, out y);
+                if (!IsNumber) { Console.WriteLine("Введены некоректные данные"); }
+            } while (!IsNumber);
+            IsOblast = (((x * x) + (y * y) <= 1) && (y >= -x - 1)); // Проверка попадания в область
+            if (IsOblast)
+            {
+                Console.WriteLine($"Точка с координатами ({x}, {y}) попадает в область, которая ограничена окружностью и прямой");
+            }
+            else
+            {
+                Console.WriteLine($"Точка с координатами ({x}, {y}) НЕ попадает в область, которая ограничена окружностью и прямой");
+            }
+
+        }
+    }
+}
+
