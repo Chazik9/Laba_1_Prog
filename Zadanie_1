@@ -1,0 +1,80 @@
+using System;
+
+namespace Laba_1
+{
+    internal class Program_1
+    {
+        static void Main(string[] args)
+        {
+            int n, m; // Инициализируем данные для 1-3 номера
+            double res_1; // Инициализируем переменную для результата в 1 номере
+            bool check_2, check_3; // Инициализируем логические переменные для проверки номеров 2-3
+            double x = 0; // Инициализируем x для 4 задания
+            bool IsNumber = false, Proverka_Ogranich_4 = true; //Инициализируем ISNubmer для проверки входных данных и Proverka_Ogranich_4 для проверки исключений в 4 номере
+            string temp; //Строка для входных данных
+
+            do
+            {
+                Console.WriteLine("Введите элемент n");
+                temp = Console.ReadLine();
+                IsNumber = int.TryParse(temp, out n);
+                if (!IsNumber) { Console.WriteLine("Введены некоректные данные"); }
+            } while (!IsNumber);
+            do
+            {
+                Console.WriteLine("Введите элемент m");
+                temp = Console.ReadLine();
+                IsNumber = int.TryParse(temp, out m);
+                if (!IsNumber) { Console.WriteLine("Введены некоректные данные"); }
+            } while (!IsNumber);
+            do
+            {
+                Console.WriteLine("Введите элемент x");
+                temp = Console.ReadLine();
+                IsNumber = double.TryParse(temp, out x);
+                if (!IsNumber) { Console.WriteLine("Введены некоректные данные"); }
+            } while (!IsNumber); // Проверка входных данных, на корректный тип данных
+
+            if (m == 1)//Проверка исключений
+            {
+                Console.WriteLine("Определение 1 значения невозможно. Деление на ноль");
+                check_2 = ++m < n--;
+                Console.WriteLine($"2) n = {n}, m = {m} +mm < n-- = {check_2} ");
+                check_3 = --m > ++n;
+                Console.WriteLine($"3) n = {n}, m = {m} n++ / --m = {check_3} ");
+            }
+            else
+            {
+                res_1 = n++ / --m;
+                Console.WriteLine($"1) n = {n}, m = {m} n++ / --m = {res_1} ");
+
+                check_2 = ++m < n--;
+                Console.WriteLine($"2) n = {n}, m = {m} ++m < n-- = {check_2} ");
+                check_3 = --m > ++n;
+                Console.WriteLine($"3) n = {n}, m = {m} n++ / --m = {check_3} ");
+
+            }
+            if (x == 0)//Проверка исключений Деление на 0
+            {
+                Console.WriteLine("Определение 4 значения невозможно. Деление на ноль");
+                Proverka_Ogranich_4 = false;
+            }
+            if (Math.Abs(Math.Cos(x)) < 1e-2)//Проверка исключений тангенс должен быть определён => косинус не 0 с погрешностью 2 знака
+                {
+                    Console.WriteLine("Определение 4 значения невозможно. Тангенс не определён");
+                    Proverka_Ogranich_4 = false;
+                }
+            if (Proverka_Ogranich_4)
+            {
+                if (Math.Pow(Math.E, x) + Math.Tan(x) < 0)
+                { Console.WriteLine($"Значение выражения 4: {-Math.Pow(Math.Abs(Math.Pow(Math.E, x) + Math.Tan(x)), 1.0 / 3.0) + 1.0 / x}"); }
+                else
+                {
+                    Console.WriteLine($"Значение выражения 4: {Math.Pow(Math.Pow(Math.E, x) + Math.Tan(x), 1.0 / 3.0) + 1.0 / x}");
+                }
+            }
+
+
+            }
+        }
+    }
