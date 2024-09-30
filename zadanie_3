@@ -1,0 +1,20 @@
+using System;
+
+namespace Zad_3
+{
+    internal class Program_3
+    {
+        static void Main(string[] args)
+        {
+            double a_d = 1000, b_d = 0.0001, chis_d, znam_d; //_d - переменные типа double, Инициализируем a, b, промежуточные числитель и знаменатель
+            float a_f = 1000, b_f = (float)0.0001, chis_f, znam_f;//_f - переменные типа float, Инициализируем a, b, промежуточные числитель и знаменатель
+            chis_d = Math.Pow(a_d + b_d, 4) - (Math.Pow(a_d, 4) + 6 * Math.Pow(a_d, 2) * Math.Pow(b_d, 2) + 4 * a_d * Math.Pow(b_d, 3));
+            znam_d = 4 * Math.Pow(a_d, 3) * b_d + Math.Pow(b_d, 4);
+            Console.WriteLine($"Вывод программы при типе переменных double {chis_d/znam_d}");
+            chis_f = (float)Math.Pow(a_f+b_f, 4) - ((float)Math.Pow(a_f, 4) + 6 * (float)Math.Pow(a_f, 2) * (float)Math.Pow(b_f, 2) + 4 * a_f * (float)Math.Pow(b_f, 3));
+            znam_f = (float)Math.Pow(b_f, 4) + 4 * (float)Math.Pow(a_f, 3) * b_f;
+            Console.WriteLine($"Вывод программы при типе переменных double {chis_f / znam_f}");
+
+        }
+    }
+}
